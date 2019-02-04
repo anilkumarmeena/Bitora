@@ -1,13 +1,14 @@
 from django.db import models
 
-# Create your models here.\
 
 class Questions(models.Model):
-    title= models.CharField(max_length=200)
+    # Questions titile
+    title = models.CharField(max_length=255, null=False)
+    # detail explain of question
     content = models.TextField()
-    time = models.DateTimeField("time of publish")
+    # posting time 
+    time = models.DateTimeField(auto_now_add=True, blank=True)
 
-    def _str_(self):
+
+    def __str__(self):
         return self.title
-
-
