@@ -18,5 +18,5 @@ from django.urls import path
 from .views import Listque 
 
 urlpatterns = [
-    path('',Listque.as_view(), name="all questions"),
+    path('',Listque.as_view({'get': 'list'}), name="all questions"),
 ]
