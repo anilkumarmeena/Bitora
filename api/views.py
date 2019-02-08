@@ -1,8 +1,6 @@
 from rest_framework import generics
 from rest_framework.response import Response
-
 from .models import Questions
-from rest_framework import viewsets
 from .serializers import queSerializer
 
 
