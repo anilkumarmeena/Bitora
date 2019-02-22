@@ -1,14 +1,16 @@
-from django.db import models
+from djongo import models
 
+class Blog(models.Model):
+    name = models.CharField(max_length=100)
+    tagline = models.TextField()
 
-class Questions(models.Model):
-    # Questions titile
-    title = models.CharField(max_length=255, null=False)
-    # detail explain of question
-    content = models.TextField()
-    # posting time 
-    time = models.DateTimeField(auto_now_add=True, blank=True)
+    class Meta:
+        abstract = True
 
-
-    def __str__(self):
-        return self.title
+class Entry(models.Model):
+    blog = models.EmbeddedModelField(
+        model_container=Blog,
+    )
+    
+    headline = models.CharField(max_length=255)
+    
