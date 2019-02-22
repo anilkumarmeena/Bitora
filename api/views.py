@@ -14,4 +14,4 @@ class Listque(viewsets.ModelViewSet):
         serializer = queSerializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
             article_saved = serializer.save()
-        return Response({"s": "'{}' created successfully".format(article_saved.title)})
+        return Response({"success": "'{}' created successfully".format(article_saved.title)})
