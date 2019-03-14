@@ -38,8 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'rest_framework_mongoengine',
     'api',
+    
 ]
 
 MIDDLEWARE = [
@@ -78,9 +78,8 @@ WSGI_APPLICATION = 'Bitora.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'djongo',
-        'NAME': 'bitora',
-        'HOST': 'mongodb://localhost:27017/bitora',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 

@@ -1,34 +1,25 @@
 from rest_framework import serializers
-from .models import Entry
+
+from .models import Question, Answers
 
 
-class queSerializer(serializers.ModelSerializer):
+# class VoteSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Vote
+#         fields = '__all__'
 
-    blog = serializers.SerializerMethodField()
+
+class AnswerSerializer(serializers.ModelSerializer):
+    #votes = VoteSerializer(many=True, required=False)
+
     class Meta:
-        model = Entry
-        fields = ("blog", "headline")
+        model = Answers
+        fields = '__all__'
 
 
-    def get_blog(self, obj):
-        return_data = None
-        if type(obj.blog) == list:
-            embedded_list = []
-            for item in obj.blog:
-                embedded_dict = item.__dict__
-                for key in list(embedded_dict.keys()):
-                    if key.startswith('_'):
-                        embedded_dict.pop(key)
-                embedded_list.append(embedded_dict)
-            return_data = embedded_list
-        else:
-            embedded_dict = obj.blog.__dict__
-            for key in list(embedded_dict.keys()):
-                if key.startswith('_'):
-                    embedded_dict.pop(key)
-            return_data = embedded_dict
-        return return_data
+class QuestionSerializer(serializers.ModelSerializer):
+    Answers = AnswerSerializer(many=True, read_only=True, required=False)
 
-
-        def create(self, validated_data):
-            return Entry.create(**validated_data)
+    class Meta:
+        model = Question
+        fields = '__all__'

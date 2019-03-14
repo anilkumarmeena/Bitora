@@ -1,16 +1,28 @@
-from djongo import models
+from django.db import models
+from django.contrib.auth.models import User
 
-class Blog(models.Model):
-    name = models.CharField(max_length=100)
-    tagline = models.TextField()
 
-    class Meta:
-        abstract = True
+class Question(models.Model):
+    question = models.CharField(max_length=100)
+    #created_by = models.ForeignKey(User, on_delete=models.CASCADE)
+    pub_date = models.DateTimeField(auto_now=True)
 
-class Entry(models.Model):
-    blog = models.EmbeddedModelField(
-        model_container=Blog,
-    )
-    
-    headline = models.CharField(max_length=255)
-    
+    def __str__(self):
+        return self.question
+
+
+class Answers(models.Model):
+    question = models.ForeignKey(Question, related_name='Answers', on_delete=models.CASCADE)
+    answer = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.answer
+
+
+# class Vote(models.Model):
+#     choice = models.ForeignKey(Choice, related_name='votes', on_delete=models.CASCADE)
+#     poll = models.ForeignKey(Poll, on_delete=models.CASCADE)
+#     voted_by = models.ForeignKey(User, on_delete=models.CASCADE)
+
+#     class Meta:
+#         unique_together = ("poll", "voted_by")
