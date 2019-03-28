@@ -7,7 +7,7 @@ import { User } from 'src/app/model/user';
 })
 export class EnrollmentService {
 
-  _url='http://127.0.0.1:8000/';
+  _url='http://127.0.0.1:8000';
   constructor(private _http: HttpClient) { }
 
   enroll(user: User){
