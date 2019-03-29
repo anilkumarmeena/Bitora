@@ -6,9 +6,16 @@ from django.shortcuts import get_object_or_404
 from .models import Question, Answers
 from  .serializers import QuestionSerializer,AnswerSerializer
 
-class Questionlist(generics.ListCreateAPIView):
+class Questionlist(viewsets.ModelViewSet):
     queryset = Question.objects.all()
     serializer_class = QuestionSerializer
+
+    def post(self, request):
+        # Create an article from the above data
+        serializer = QuestionSerializer(data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            article_saved = serializer.save()
+        return Response({"success": "Article '{}' created successfully"})
 
 
 

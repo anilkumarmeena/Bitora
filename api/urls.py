@@ -18,7 +18,7 @@ from django.urls import path
 from .views import Questionlist, PollDetail,Answerlist
 
 urlpatterns = [
-    path("", Questionlist.as_view(), name="polls_list"),
+    path("", Questionlist.as_view({'get': 'list'}), name="polls_list"),
     path("polls/<int:pk>/", PollDetail.as_view(), name="polls_detail"),
     path("answers/", Answerlist.as_view(), name="choice_list"),
     # path("vote/", CreateVote.as_view(), name="create_vote"),
