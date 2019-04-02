@@ -7,10 +7,8 @@
     <div class="model__inputbox">
       <form #userForm= "ngForm" (ngSubmit)="onSubmit()">
       
-  <br>
-  
    <input type="text" name="question" [(ngModel)]="userModel.question" placeholder="Start your question with &quot;What&quot;, &quot;How&quot;, &quot;Why&quot;, etc.">
-        <button type="submit">submit</button>
+        <button type="submit"></button>
       </form>
     </div>
      {{response}}
