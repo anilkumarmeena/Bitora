@@ -17,7 +17,7 @@ export class FeedComponent implements OnInit{
   ngOnInit() {
     this.httpClient.get('http://127.0.0.1:8000/').subscribe((res : any[])=>{
     this.data= res;
-    //console.log(this.data);
+    console.log(this.data);
     });
   }
 
