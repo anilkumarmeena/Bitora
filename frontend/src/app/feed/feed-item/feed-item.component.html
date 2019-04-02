@@ -3,7 +3,7 @@
     <div><h3 class="quePostedUsrName">{{ data.usrName }}</h3>
       <p>{{ data.time }}</p></div>
   </div>
-  <h1 class="queTitle" (click)="openAnswerView()">{{ data.title }}</h1>
-  <p>{{ data.desc }}</p>
+  <h1 class="queTitle" (click)="openAnswerView()">{{ data.question }}</h1>
+  <p>{{ data.Answers[0].answer }}</p>
   <div class="bottomControll"><i class="fa fa-heart"></i><i class="fa fa-share"></i><span>{{ data.likes }}</span></div>
 </li>
