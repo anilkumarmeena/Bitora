@@ -1,1 +1,3 @@
 # Bitora
+#Full Stack 
+#Bit
